@@ -89,7 +89,14 @@ $conn->close();
 
 				while($row = $result->fetch_assoc()) {
 					$i;
-					echo '<br><input type="button" onclick="myFunction(this)" id="'.$i.'" data-teamnr="'.$teamnr.'" data-nick="'.$row["nick"].'" data-steamid="'.$row["steamid"].'" value="'.$row["nick"].'"></br>';
+					echo '<br><
+					input type="button" 
+					onclick="myFunction(this)" 
+					id="'.$i.'" 
+					data-teamnr="'.$teamnr.'" 
+					data-nick="'.$row["nick"].'" 
+					data-steamid="'.$row["steamid"].'" 
+					value="'.$row["nick"].'"></br>';
 					$i++;
 				}
 		} 
