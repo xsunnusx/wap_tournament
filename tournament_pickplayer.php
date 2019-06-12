@@ -80,7 +80,7 @@ $conn->close();
 
 
 
-if ($captain != 0) {
+($captain != 0) {
 	// players list
 	$conn = new mysqli($servername, $username, $password, $dbmix);
 	$sql1 = "SELECT nick,steamid FROM tournament WHERE picked = 0";
@@ -88,8 +88,9 @@ if ($captain != 0) {
 		if ($result->num_rows > 0) {
 
 				while($row = $result->fetch_assoc()) {
-					echo '<br><input name="submit" type="submit" data-teamnr="'.$teamnr.'" data-nick="'.$row["nick"].'" data-steamid="'.$row["steamid"].'" value="'.$row["nick"].'" onclick="myFunction()"></br>';
-
+					$i;
+					echo '<br><input type="button" onclick="myFunction(this)" id="'.$i.'" data-teamnr="'.$teamnr.'" data-nick="'.$row["nick"].'" data-steamid="'.$row["steamid"].'" value="'.$row["nick"].'"></br>';
+					$i++;
 				}
 		} 
 
@@ -110,8 +111,8 @@ else {
 
  </table></center>
  <script>
-function myFunction() {
-	var buttom = document.querySelector("input");
+function myFunction(elem) {
+	var buttom = document.getElementById(elem.id);
     var steamid = buttom.getAttribute("data-steamid");
     var team = buttom.getAttribute("data-teamnr");
     var nick1 = buttom.getAttribute("data-nick");
@@ -129,4 +130,3 @@ function myFunction() {
 		 
 
  </script>
- 
