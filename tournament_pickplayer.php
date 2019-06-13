@@ -61,8 +61,8 @@ function drawTeam($teamnr, $servername, $username, $password, $dbmix) {
 			}
 		$conn->close();
 }
-echo '<div>'.drawTeam("1",$servername, $username, $password, $dbmix).' </div>';
-echo '<div>'.drawTeam("2",$servername, $username, $password, $dbmix).' </div>';
+echo '<br><div>'.drawTeam("1",$servername, $username, $password, $dbmix).' </div></br>';
+echo '<br><div>'.drawTeam("2",$servername, $username, $password, $dbmix).'</div> </br>';
 
 
 
@@ -103,7 +103,7 @@ $conn->close();
 
 //timetopick
 $conn = new mysqli($servername, $username, $password, $dbmix);
-$sql3 = "SELECT steamid FROM tournament WHERE timetopick = '1' LIMIT 1";
+$sql3 = "SELECT steamid FROM tournament WHERE capt = '1' ORDER BY last_update ASC LIMIT 1";
 $result = $conn->query($sql3);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -118,8 +118,7 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 //timetopick
-
-
+echo '<div id ="pick">';
 if ($captain != 0 && $timetopick) {
 	// players list
 	$conn = new mysqli($servername, $username, $password, $dbmix);
@@ -135,9 +134,9 @@ if ($captain != 0 && $timetopick) {
 					}
 				}
 		} 
-else {
-			echo 'No one listed for tournament';
-	}
+		else {
+					echo 'No one listed for tournament';
+			}
 $conn->close();
 // players list end
 }
@@ -147,6 +146,7 @@ elseif($captain != 0 && !$timetopick){
 else {
 	echo "Not captain";
 }
+echo '</div>';
 //error_reporting(E_ALL);
 //ini_set('display_errors', '1');
 ?>
@@ -168,11 +168,17 @@ function myFunction(elem) {
             success: function(data){  
                                     alert(data);
 									console.log(data);
-									window.location.href = "tournament_pickplayer";
+									window.location.href = "tournament_pickplayer"; // where to go after getting response
                     },
         });
     }
-		 
+
+
+setInterval(function()
+{
+  $('#pick').load(document.URL +  ' #pick');
+}, 30000);
+
 
  </script>
  
