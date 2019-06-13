@@ -6,8 +6,6 @@ $conn = new mysqli($servername, $username, $password, $dbmix);
 	$result = $conn->query($sql1);
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				//$captenid[$row["timetopick"]] = $row["steamid"];
-				echo '<br>'.$row["steamid"].' + '.$row["timetopick"].'</br>';
 				array_push($captenid[$row["steamid"]] = $row["timetopick"]);
 			}
 		}
