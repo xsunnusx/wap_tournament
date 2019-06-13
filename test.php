@@ -6,11 +6,12 @@ $conn = new mysqli($servername, $username, $password, $dbmix);
 	$result = $conn->query($sql1);
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				array_push($captenid, $key = $row["steamid"], $value = $row["timetopick"]);
-				//echo $row["steamid"];
+				//$captenid[$row["timetopick"]] = $row["steamid"];
+				echo '<br>'.$row["steamid"].' + '.$row["timetopick"].'</br>';
+				array_push($captenid[$row["steamid"]] = $row["timetopick"]);
 			}
 		}
 
 
-print_r (each($captenid)); // Returns the key and value of the current element (now Joe), and moves the internal pointer forward
+print_r ($captenid); // Returns the key and value of the current element (now Joe), and moves the internal pointer forward
 ?>
