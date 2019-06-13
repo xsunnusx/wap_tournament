@@ -15,16 +15,16 @@ $capt = $_POST['capt'];
 		die("Connection failed: " . $conn->connect_error);
 	}
 	$sql = "UPDATE tournament SET team = '$team' , picked = '1' WHERE steamid = '$stid'";
-	$sql2 = "UPDATE tournament SET timetopick = '0' WHERE steamid = '$capt'";
-	$sql3 = "UPDATE tournament SET timetopick = '1' WHERE capt = '1' AND timetopick = '0' LIMIT 1"; // vaja panna järgmisele kaptenile timetopick 1 aga järjest kordamööda, ja kui lõppeb table siis alustab algusest, nagu loop
+	$sql2 = "UPDATE tournament SET timetopick = '1' WHERE steamid = '$capt'";
+	$sql3 = "UPDATE tournament SET timetopick = '0' WHERE steamid = '$capt'";
+	//$sql3 = "UPDATE tournament SET timetopick = '1' WHERE capt = '1' AND timetopick = '0' LIMIT 1"; // vaja panna järgmisele kaptenile timetopick 1 aga järjest kordamööda, ja kui lõppeb table siis alustab algusest, nagu loop
+	//$sql3 = "UPDATE tournament SET timetopick = '1' WHERE  capt = '1' AND timetopick IS DISTINCT FROM '1'";
 	$result = $conn->query($sql);
-	$result = $conn->query($sql3);
 	$result = $conn->query($sql2);
+	$result = $conn->query($sql3);
 	$conn->close();
 
 
 echo "You picked: $name to your team";
-//echo $capt;
-
+//UPDATE tournament SET    timetopick = '1' WHERE  capt = '1' AND   timetopick IS DISTINCT FROM '1';
 ?>
-
