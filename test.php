@@ -15,7 +15,6 @@ $conn = new mysqli($servername, $username, $password, $dbmix);
 print_r ($captenid); // Returns the key and value of the current element, and moves the internal pointer forward
 
 echo "Captains:";
-$kogus = count($captains);
 foreach ($captains as $key => $val) {
 	if ($key == $stid && $val == 1) {
 	echo "<br>Your time to pick</br>";
