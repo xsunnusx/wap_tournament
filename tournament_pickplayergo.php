@@ -24,7 +24,7 @@ $capt = $_POST['capt'];
 
 
 echo "You picked: $name to your team";
-echo $capt;
+//echo $capt;
 
 ?>
 
